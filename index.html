@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Georgia', serif;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/api/placeholder/1200/400');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .header-content h1 {
+            font-size: 4em;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-family: 'Georgia', serif;
+        }
+
+        nav {
+            background-color: #1a1a1a;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 1.2em;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .bio-section, .album-section {
+            margin: 2rem 0;
+            background-color: #1a1a1a;
+            padding: 2rem;
+            border-radius: 5px;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+
+        .gallery-image:hover {
+            transform: scale(1.05);
+        }
+
+        .album-info {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .track-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .track-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #333;
+        }
+
+        footer {
+            background-color: #1a1a1a;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .social-links a {
+            color: #fff;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Alys Noir</h1>
+            <p>Chanteuse Gothic Rock</p>
+        </div>
+    </header>
+
+    <nav>
+        <a href="#bio">Biographie</a>
+        <a href="#photos">Photos</a>
+        <a href="#album">Album</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="main-content">
+        <section id="bio" class="bio-section">
+            <h2>Biographie</h2>
+            <p>Née dans les brumes de la Bretagne, Alys Noir a toujours été attirée par les arts sombres et la musique alternative. Dès son plus jeune âge, elle trouve refuge dans la poésie et la musique gothique, s'inspirant d'artistes comme Siouxsie Sioux et Patricia Morrison.</p>
+            
+            <p>À 16 ans, elle forme son premier groupe de rock dans le garage familial, explorant déjà les thèmes qui deviendront sa signature : la mélancolie, la révolte et la beauté dans les ténèbres. Après des années de persévérance et de création, elle se lance en solo en 2023, développant un style unique qui mêle rock gothique, électro dark et influences traditionnelles bretonnes.</p>
+            
+            <p>Sa voix envoûtante et ses textes poétiques lui ont rapidement permis de se faire remarquer sur la scène alternative française. Son premier album "Les Ailes Brisées" révèle une artiste à la sensibilité à fleur de peau, capable de transformer ses démons intérieurs en hymnes cathartiques.</p>
+        </section>
+
+        <section id="photos" class="image-gallery">
+            <img src="/api/placeholder/400/400" alt="Alys en concert" class="gallery-image">
+            <img src="/api/placeholder/400/400" alt="Portrait d'Alys" class="gallery-image">
+            <img src="/api/placeholder/400/400" alt="Séance photo artistique" class="gallery-image">
+        </section>
+
+        <section id="album" class="album-section">
+            <h2>Premier Album : Les Ailes Brisées</h2>
+            <div class="album-info">
+                <img src="/api/placeholder/400/400" alt="Couverture de l'album Les Ailes Brisées">
+                <div>
+                    <p>Sorti le 31 octobre 2023, "Les Ailes Brisées" est un voyage émotionnel à travers 10 titres qui explorent les thèmes de la renaissance, de la transformation et de la résilience.</p>
+                    <h3>Liste des titres</h3>
+                    <ul class="track-list">
+                        <li>1. L'Envol Nocturne (4:35)</li>
+                        <li>2. Cendres et Plumes (5:12)</li>
+                        <li>3. La Danse des Corbeaux (4:48)</li>
+                        <li>4. Échos d'un Rêve Brisé (6:03)</li>
+                        <li>5. Les Larmes de la Lune (5:27)</li>
+                        <li>6. Requiem pour un Ange (5:55)</li>
+                        <li>7. Le Masque de Verre (4:42)</li>
+                        <li>8. Valse des Ombres (5:18)</li>
+                        <li>9. La Cathedral Silencieuse (6:33)</li>
+                        <li>10. Renaissance dans les Ténèbres (7:01)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <div class="social-links">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">YouTube</a>
+                <a href="#">Spotify</a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2024 Alys Noir - Tous droits réservés</p>
+    </footer>
+</body>
+</html>
