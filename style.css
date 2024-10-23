@@ -7,7 +7,7 @@ body {
 }
 
 header {
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/header-bg.jpg');
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('./images/header-bg.jpg');
     background-size: cover;
     background-position: center;
     height: 400px;
@@ -28,6 +28,9 @@ nav {
     background-color: #1a1a1a;
     padding: 1rem;
     text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 nav a {
@@ -79,6 +82,12 @@ nav a:hover {
     grid-template-columns: 1fr 2fr;
     gap: 2rem;
     align-items: start;
+}
+
+.album-info img {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
 .track-list {
