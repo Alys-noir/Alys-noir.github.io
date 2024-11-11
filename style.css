@@ -139,3 +139,30 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+.track-list button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-left: 0.5rem;
+}
+
+.track-list button:hover {
+    background-color: #555;
+}
+
+/* Style pour les paroles de chanson */
+.lyrics {
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: #2a2a2a;
+    border-radius: 5px;
+    line-height: 1.5;
+    font-size: 0.95em;
+    display: none; /* Par défaut caché, affiché au clic */
+}
+
