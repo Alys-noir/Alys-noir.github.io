@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./style.css">
+    <script>
+        function toggleLyrics(id) {
+            var element = document.getElementById(id);
+            element.style.display = (element.style.display === "none" || element.style.display === "") ? "block" : "none";
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -11,30 +17,22 @@
             <p>Chanteuse Gothic Rock</p>
         </div>
     </header>
-
     <nav>
         <a href="#bio">Biographie</a>
         <a href="#photos">Photos</a>
         <a href="#album">Album</a>
         <a href="#contact">Contact</a>
     </nav>
-
     <div class="main-content">
         <section id="bio" class="bio-section">
             <h2>Biographie</h2>
-            <p>Née dans les brumes de la Bretagne, Alys Noir a toujours été attirée par les arts sombres et la musique alternative. Dès son plus jeune âge, elle trouve refuge dans la poésie et la musique gothique, s'inspirant d'artistes comme Siouxsie Sioux et Patricia Morrison.</p>
-            
-            <p>À 16 ans, elle forme son premier groupe de rock dans le garage familial, explorant déjà les thèmes qui deviendront sa signature : la mélancolie, la révolte et la beauté dans les ténèbres. Après des années de persévérance et de création, elle se lance en solo en 2023, développant un style unique qui mêle rock gothique, électro dark.</p>
-            
-            <p>Sa voix envoûtante et ses textes poétiques lui ont rapidement permis de se faire remarquer sur la scène alternative française. Son premier album "Les Ailes Brisées" révèle une artiste à la sensibilité à fleur de peau, capable de transformer ses démons intérieurs en hymnes cathartiques.</p>
+            <p>Née dans les brumes de la Bretagne, Alys Noir a toujours été attirée par les arts sombres et la musique alternative...</p>
         </section>
-
         <section id="photos" class="image-gallery">
             <img src="./images/photo1.jpg" alt="Nouvelle image" class="gallery-image">
             <img src="./images/photo2.jpg" alt="Portrait d'Alys" class="gallery-image">
             <img src="./images/photo3.jpg" alt="Séance photo artistique" class="gallery-image">
         </section>
-
         <section id="album" class="album-section">
             <h2>Premier Album : Les Ailes Brisées</h2>
             <div class="album-info">
@@ -43,21 +41,27 @@
                     <p>Sorti le 18 octobre 2024, "Les Ailes Brisées" est un voyage émotionnel à travers 10 titres qui explorent les thèmes de la renaissance, de la transformation et de la résilience.</p>
                     <h3>Liste des titres</h3>
                     <ul class="track-list">
-                        <li>1. Entre les Ombres (3:38)</li>
-                        <li>2. La dernière danse (2:59)</li>
-                        <li>3. L’enfant du vide (3:03)</li>
-                        <li>4. Invisible (4:00)</li>
-                        <li>5. Écorchée vive (3:06)</li>
-                        <li>6. De l'autre côté (3:14)</li>
-                        <li>7. L’âme en exil (3:07)</li>
-                        <li>8. Naufrage intérieur (3:11)</li>
-                        <li>9. Les ailes brisées (2:54)</li>
-                        <li>10. La danse des ombres (4:00)</li>
+                        <li>1. Entre les Ombres (3:38) <button onclick="toggleLyrics('lyrics1')">Paroles</button></li>
+                        <div id="lyrics1" class="lyrics" style="display: none;">
+                            Dans le silence, je te cherche encore, Ton ombre danse là où bat mon corps...
+                        </div>
+
+                        <li>2. La dernière danse (2:59) <button onclick="toggleLyrics('lyrics2')">Paroles</button></li>
+                        <div id="lyrics2" class="lyrics" style="display: none;">
+                            Nous étions deux, liés par un fil, Un souffle, un battement fragile...
+                        </div>
+
+                        <li>3. L’enfant du vide (3:03) <button onclick="toggleLyrics('lyrics3')">Paroles</button></li>
+                        <div id="lyrics3" class="lyrics" style="display: none;">
+                            Je suis l’enfant des songes, Qui se perd dans les mensonges...
+                        </div>
+
+                        <!-- Ajouter les autres chansons de la même manière -->
+
                     </ul>
                 </div>
             </div>
         </section>
-
         <section id="contact">
             <h2>Contact</h2>
             <div class="social-links">
@@ -68,7 +72,6 @@
             </div>
         </section>
     </div>
-
     <footer>
         <p>© 2024 Alys Noir - Tous droits réservés</p>
     </footer>
