@@ -58,23 +58,34 @@ nav a:hover {
     border-radius: 5px;
 }
 
+/* REMPLACEZ CETTE SECTION EXISTANTE */
 .image-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin: 2rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    padding: 20px;
 }
 
+/* REMPLACEZ CETTE SECTION EXISTANTE */
 .gallery-image {
-    width: 100%;
-    height: 400px;
+    width: 150px;
+    height: 150px;
     object-fit: cover;
-    border-radius: 5px;
-    transition: transform 0.3s;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
+/* Effet au survol */
 .gallery-image:hover {
+    width: 300px;
+    height: 300px;
     transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 10;
+    position: relative;
 }
 
 .album-info {
@@ -135,8 +146,20 @@ footer {
         grid-template-columns: 1fr;
     }
     
+    /* Adaptation pour mobile */
     .image-gallery {
-        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 10px;
+    }
+    
+    .gallery-image {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .gallery-image:hover {
+        width: 200px;
+        height: 200px;
     }
 }
 
@@ -165,4 +188,3 @@ footer {
     font-size: 0.95em;
     display: none; /* Par défaut caché, affiché au clic */
 }
-
