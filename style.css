@@ -1,190 +1,59 @@
-body {
-    margin: 0;
-    font-family: 'Georgia', serif;
-    background-color: #000;
-    color: #fff;
-    line-height: 1.6;
-}
-
-header {
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('./images/header-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.header-content h1 {
-    font-size: 4em;
-    margin: 0;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    font-family: 'Georgia', serif;
-}
-
-nav {
-    background-color: #1a1a1a;
-    padding: 1rem;
-    text-align: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-nav a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 1rem;
-    font-size: 1.2em;
-}
-
-nav a:hover {
-    color: #a8a8a8;
-    transition: color 0.3s;
-}
-
-.main-content {
+/* Styles pour la galerie de vidéos */
+#videos {
+    padding: 40px 20px;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem;
 }
 
-.bio-section, .album-section {
-    margin: 2rem 0;
-    background-color: #1a1a1a;
-    padding: 2rem;
-    border-radius: 5px;
-}
-
-/* REMPLACEZ CETTE SECTION EXISTANTE */
-.image-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-    padding: 20px;
-}
-
-/* REMPLACEZ CETTE SECTION EXISTANTE */
-.gallery-image {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-/* Effet au survol */
-.gallery-image:hover {
-    width: 300px;
-    height: 300px;
-    transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    z-index: 10;
-    position: relative;
-}
-
-.album-info {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 2rem;
-    align-items: start;
-}
-
-.album-info img {
-    width: 100%;
-    border-radius: 5px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.5);
-}
-
-.track-list {
-    list-style: none;
-    padding: 0;
-}
-
-.track-list li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #333;
-}
-
-footer {
-    background-color: #1a1a1a;
+#videos h2 {
     text-align: center;
-    padding: 2rem;
-    margin-top: 4rem;
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: #2c3e50;
 }
 
-.social-links {
-    margin: 2rem 0;
+.videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
 }
 
-.social-links a {
-    color: #fff;
-    margin: 0 1rem;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border: 1px solid #fff;
-    border-radius: 3px;
+.video-item {
+    background: #f8f9fa;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.social-links a:hover {
-    background-color: #fff;
-    color: #000;
-    transition: all 0.3s;
+.video-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
 }
 
+.video-item iframe {
+    width: 100%;
+    height: 250px;
+    display: block;
+}
+
+.video-item h3 {
+    padding: 15px;
+    margin: 0;
+    font-size: 1.2em;
+    color: #34495e;
+    text-align: center;
+    background: white;
+}
+
+/* Responsive pour mobile */
 @media (max-width: 768px) {
-    .header-content h1 {
-        font-size: 3em;
-    }
-    
-    .album-info {
+    .videos-grid {
         grid-template-columns: 1fr;
     }
     
-    /* Adaptation pour mobile */
-    .image-gallery {
-        gap: 10px;
-        padding: 10px;
-    }
-    
-    .gallery-image {
-        width: 120px;
-        height: 120px;
-    }
-    
-    .gallery-image:hover {
-        width: 200px;
+    .video-item iframe {
         height: 200px;
     }
-}
-
-.track-list button {
-    background-color: #333;
-    color: #fff;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.9em;
-    margin-left: 0.5rem;
-}
-
-.track-list button:hover {
-    background-color: #555;
-}
-
-/* Style pour les paroles de chanson */
-.lyrics {
-    margin: 1rem 0;
-    padding: 1rem;
-    background-color: #2a2a2a;
-    border-radius: 5px;
-    line-height: 1.5;
-    font-size: 0.95em;
-    display: none; /* Par défaut caché, affiché au clic */
 }
