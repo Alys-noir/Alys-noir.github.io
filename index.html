@@ -3,10 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./style.css">
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <script>
         function toggleLyrics(id) {
             var element = document.getElementById(id);
             element.style.display = (element.style.display === "none" || element.style.display === "") ? "block" : "none";
+        }
+
+        function openVideo(videoId) {
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('youtubeIframe');
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+            modal.style.display = 'flex';
+        }
+
+        function closeVideo() {
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('youtubeIframe');
+            iframe.src = '';
+            modal.style.display = 'none';
+        }
+
+        function toggleFullscreen() {
+            const container = document.querySelector('.museum-container');
+            if (!document.fullscreenElement) {
+                container.requestFullscreen().catch(err => {
+                    alert(`Erreur lors du passage en plein écran: ${err.message}`);
+                });
+            } else {
+                document.exitFullscreen();
+            }
         }
     </script>
 </head>
@@ -19,6 +45,7 @@
     </header>
     <nav>
         <a href="#bio">Biographie</a>
+        <a href="#museum">Musée 360°</a>
         <a href="#photos">Photos</a>
         <a href="#albums">Albums</a>
         <a href="#contact">Contact</a>
@@ -41,9 +68,48 @@ Suivent le single Vierge ou Vipère (21 juin 2026) et l’album La Main de l’E
 À ce jour, aucun gain n’a encore été généré, et chaque projet est financé personnellement pour améliorer la production, offrir du contenu aux fans et faire vivre la musique.
 Si des bénéfices venaient un jour à être réalisés, ils seraient en grande partie redistribués, CD physiques offerts, concerts gratuits, ou aide apportée à des personnes dans le besoin.
 Son art a pour but de donner, jamais de prendre : une musique qui tend la main, loin des artifices, fidèle à son âme.</p>
-
-            
         </section>
+
+        <section id="museum" class="museum-section">
+            <h2>Musée Virtuel 360°</h2>
+            <p>Explorez mon univers visuel. Cliquez sur les pochettes d'album pour visionner les clips.</p>
+            <div class="museum-container">
+                <a-scene embedded id="museum-scene" cursor="rayOrigin: mouse">
+                    <a-assets>
+                        <img id="sky" src="./images/musee_360.webp">
+                    </a-assets>
+                    
+                    <a-sky src="#sky" rotation="0 -90 0"></a-sky>
+                    
+                    <!-- Hotspot: Les poupées saignent -->
+                    <a-plane position="-4.5 0.5 -1.5" rotation="0 70 0" width="1.5" height="1.5" 
+                             material="opacity: 0; transparent: true"
+                             class="clickable"
+                             onclick="openVideo('FB6NdasC8kU')">
+                    </a-plane>
+                    
+                    <!-- Hotspot: Ombre et chaos -->
+                    <a-plane position="4.5 0.5 -1.5" rotation="0 -70 0" width="1.5" height="1.5" 
+                             material="opacity: 0; transparent: true"
+                             class="clickable"
+                             onclick="openVideo('T-A5B8ybpjc')">
+                    </a-plane>
+
+                    <a-camera wasd-controls-enabled="false" look-controls="reverseMouseDrag: true"></a-camera>
+                </a-scene>
+            </div>
+            <div class="museum-controls">
+                <button class="btn-fullscreen" onclick="toggleFullscreen()">Mode Plein Écran</button>
+            </div>
+        </section>
+
+        <!-- Modal Vidéo -->
+        <div id="videoModal" class="video-modal" onclick="closeVideo()">
+            <div class="modal-content" onclick="event.stopPropagation()">
+                <span class="close-modal" onclick="closeVideo()">&times;</span>
+                <iframe id="youtubeIframe" width="100%" height="100%" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+        </div>
         <section id="photos" class="image-gallery">
             <img src="./images/Original4K-fini.png" alt="Alys Noir Studio" class="gallery-image">
             <img src="./images/Alysnoirpoprockmusique4K3.png" alt="Alys Noir Pop Rock Musique" class="gallery-image">
