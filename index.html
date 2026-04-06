@@ -74,28 +74,32 @@ Son art a pour but de donner, jamais de prendre : une musique qui tend la main, 
             <h2>Musée Virtuel 360°</h2>
             <p>Explorez mon univers visuel. Cliquez sur les pochettes d'album pour visionner les clips.</p>
             <div class="museum-container">
-                <a-scene embedded id="museum-scene" cursor="rayOrigin: mouse">
+                <a-scene embedded id="museum-scene" cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .clickable">
                     <a-assets>
                         <img id="sky" src="musee_360.webp">
                     </a-assets>
                     
                     <a-sky src="#sky" rotation="0 -90 0"></a-sky>
                     
-                    <!-- Hotspot: Les poupées saignent -->
-                    <a-plane position="-4.5 0.5 -1.5" rotation="0 70 0" width="1.5" height="1.5" 
+                    <!-- Hotspot: Les poupées saignent (Gauche) -->
+                    <a-plane position="-4.5 0.5 -1.5" rotation="0 70 0" width="2" height="2" 
                              material="opacity: 0; transparent: true"
                              class="clickable"
-                             onclick="openVideo('FB6NdasC8kU')">
+                             onclick="openVideo('FB6NdasC8kU')"
+                             onmouseenter="this.setAttribute('material', 'opacity', '0.2')"
+                             onmouseleave="this.setAttribute('material', 'opacity', '0')">
                     </a-plane>
                     
-                    <!-- Hotspot: Ombre et chaos -->
-                    <a-plane position="4.5 0.5 -1.5" rotation="0 -70 0" width="1.5" height="1.5" 
+                    <!-- Hotspot: Ombre et chaos (Droite) -->
+                    <a-plane position="4.5 0.5 -1.5" rotation="0 -70 0" width="2" height="2" 
                              material="opacity: 0; transparent: true"
                              class="clickable"
-                             onclick="openVideo('T-A5B8ybpjc')">
+                             onclick="openVideo('T-A5B8ybpjc')"
+                             onmouseenter="this.setAttribute('material', 'opacity', '0.2')"
+                             onmouseleave="this.setAttribute('material', 'opacity', '0')">
                     </a-plane>
 
-                    <a-camera wasd-controls-enabled="false" look-controls="reverseMouseDrag: true"></a-camera>
+                    <a-entity camera look-controls="reverseMouseDrag: true" wasd-controls-enabled="false"></a-entity>
                 </a-scene>
             </div>
             <div class="museum-controls">
