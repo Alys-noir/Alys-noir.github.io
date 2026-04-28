@@ -5,6 +5,27 @@
     <link rel="stylesheet" href="./style.css">
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <script>
+        // Composant pour le zoom à la molette
+        AFRAME.registerComponent('zoom-controls', {
+            schema: {
+                min: {type: 'number', default: 20},
+                max: {type: 'number', default: 80}
+            },
+            init: function () {
+                this.onWheel = this.onWheel.bind(this);
+                window.addEventListener('wheel', this.onWheel);
+            },
+            onWheel: function (event) {
+                var cam = this.el.getAttribute('camera');
+                var fov = cam.fov + event.deltaY * 0.05;
+                fov = Math.min(Math.max(fov, this.data.min), this.data.max);
+                this.el.setAttribute('camera', 'fov', fov);
+            },
+            remove: function () {
+                window.removeEventListener('wheel', this.onWheel);
+            }
+        });
+
         function toggleLyrics(id) {
             var element = document.getElementById(id);
             element.style.display = (element.style.display === "none" || element.style.display === "") ? "block" : "none";
@@ -81,7 +102,7 @@ Son art a pour but de donner, jamais de prendre : une musique qui tend la main, 
                     
                     <a-sky src="#sky" rotation="0 -90 0"></a-sky>
                     
-                    <!-- Hotspot: Les poupées saignent (Point 2 - Visage aux grands yeux) -->
+                    <!-- Hotspot: Les poupées saignent (Gauche - Visage aux grands yeux) -->
                     <a-plane position="-4.8 1.5 -2.5" rotation="0 90 0" width="2.5" height="1.8" 
                              material="opacity: 0; transparent: true"
                              class="clickable"
@@ -90,7 +111,7 @@ Son art a pour but de donner, jamais de prendre : une musique qui tend la main, 
                              onmouseleave="this.setAttribute('material', 'opacity', '0')">
                     </a-plane>
                     
-                    <!-- Hotspot: Ombre et chaos (Droite - Portrait sombre indiqué par l'utilisateur) -->
+                    <!-- Hotspot: Ombre et chaos (Droite - Portrait sombre) -->
                     <a-plane position="4.8 0.2 -0.5" rotation="0 -90 0" width="2.2" height="1.8" 
                              material="opacity: 0; transparent: true"
                              class="clickable"
@@ -99,7 +120,7 @@ Son art a pour but de donner, jamais de prendre : une musique qui tend la main, 
                              onmouseleave="this.setAttribute('material', 'opacity', '0')">
                     </a-plane>
 
-                    <a-entity camera look-controls="reverseMouseDrag: true" wasd-controls-enabled="false"></a-entity>
+                    <a-entity camera="fov: 80" look-controls="reverseMouseDrag: true" wasd-controls-enabled="false" zoom-controls="min: 20; max: 80"></a-entity>
                 </a-scene>
             </div>
             <div class="museum-controls">
