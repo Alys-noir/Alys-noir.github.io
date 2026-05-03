@@ -95,7 +95,7 @@ Son art a pour but de donner, jamais de prendre : une musique qui tend la main, 
             <h2>Musée Virtuel 360°</h2>
             <p>Explorez mon univers visuel. Cliquez sur les pochettes d'album pour visionner les clips.</p>
             <div class="museum-container">
-                <a-scene embedded id="museum-scene" cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .clickable">
+                <a-scene embedded id="museum-scene" cursor="rayOrigin: mouse; fuse: false" raycaster="objects: .clickable" renderer="antialias: true; colorManagement: true; sortObjects: true; precision: high;">
                     <a-assets>
                         <img id="sky" src="musee_360.webp">
                     </a-assets>
