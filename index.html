@@ -13,7 +13,14 @@
             },
             init: function () {
                 this.onWheel = this.onWheel.bind(this);
+                this.onTouchStart = this.onTouchStart.bind(this);
+                this.onTouchMove = this.onTouchMove.bind(this);
+                
                 window.addEventListener('wheel', this.onWheel);
+                window.addEventListener('touchstart', this.onTouchStart);
+                window.addEventListener('touchmove', this.onTouchMove);
+                
+                this.initialPinchDistance = null;
             },
             onWheel: function (event) {
                 var cam = this.el.getAttribute('camera');
@@ -21,8 +28,33 @@
                 fov = Math.min(Math.max(fov, this.data.min), this.data.max);
                 this.el.setAttribute('camera', 'fov', fov);
             },
+            onTouchStart: function (event) {
+                if (event.touches.length === 2) {
+                    this.initialPinchDistance = this.getDistance(event.touches);
+                }
+            },
+            onTouchMove: function (event) {
+                if (event.touches.length === 2 && this.initialPinchDistance) {
+                    var currentDistance = this.getDistance(event.touches);
+                    var diff = this.initialPinchDistance - currentDistance;
+                    
+                    var cam = this.el.getAttribute('camera');
+                    var fov = cam.fov + diff * 0.1;
+                    fov = Math.min(Math.max(fov, this.data.min), this.data.max);
+                    this.el.setAttribute('camera', 'fov', fov);
+                    
+                    this.initialPinchDistance = currentDistance;
+                }
+            },
+            getDistance: function (touches) {
+                var dx = touches[0].pageX - touches[1].pageX;
+                var dy = touches[0].pageY - touches[1].pageY;
+                return Math.sqrt(dx * dx + dy * dy);
+            },
             remove: function () {
                 window.removeEventListener('wheel', this.onWheel);
+                window.removeEventListener('touchstart', this.onTouchStart);
+                window.removeEventListener('touchmove', this.onTouchMove);
             }
         });
 
